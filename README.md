@@ -10,13 +10,24 @@ FusionStatusBar 是面向系统界面的 LibXposed 模块，提供融合图标�
 - 横屏自定义布局、分组成员图标缩放、统一容器材质与全局描边。
 - 分别调整电源菜单、音量菜单、通知中心与悬浮通知外观，支持三条电源菜单和短款音量条。
 
-## 0.3.173 更新
+## 最新正式版：0.3.182
+
+- 控制中心页面编辑会话、材质恢复和按变化增量刷新。
+- 诊断日志脱敏、容量/时长限制与取消清理。
+- 5G 磁贴状态预览、组合卡片成员缩放和完整轨道滑条裁剪。
+- 音量菜单填充贴合描边内缘，并跟随原生动态轮廓更新。
+
+[下载正式 APK](https://github.com/Xposed-Modules-Repo/io.github.yudigaga.fusionstatusbar/releases/tag/196-0.3.182) · [完整更新说明](https://github.com/yudigaga/FusionStatusBar/blob/v0.3.182/docs/release-v0.3.182.md)
+
+本版 Debug/Release 各 953 项单元测试通过，lint 各 0 错误、67 条警告；未进行本版实体设备安装、SystemUI 注入或目标 ROM 验收。
+
+## 0.3.173 更新（历史）
 
 汇总 0.3.152-0.3.173 的控制中心布局、材质与绘制修复，统一音乐和融合中心的形状与底色，修复磁贴遮罩和重启后材质恢复，并新增系统菜单扩展。
 
 [完整更新说明](https://github.com/yudigaga/FusionStatusBar/blob/v0.3.173/docs/release-v0.3.173.md)
 
-正式包继续使用 `io.github.yudigaga.fusionstatusbar` 和原签名，可覆盖 0.3.150、0.3.151 正式版。本次完成本地构建、测试和签名核验；未进行实体手机安装、SystemUI 注入或目标 ROM 验收。
+正式包继续使用 `io.github.yudigaga.fusionstatusbar` 和原签名，可覆盖 0.3.150 及后续正式版。历史 0.3.173 验证记录未进行实体手机安装、SystemUI 注入或目标 ROM 验收。
 
 ## 适用范围
 
