@@ -10,16 +10,17 @@ FusionStatusBar 是面向系统界面的 LibXposed 模块，提供融合图标�
 - 横屏自定义布局、分组成员图标缩放、统一容器材质与全局描边。
 - 分别调整电源菜单、音量菜单、通知中心与悬浮通知外观，支持三条电源菜单和短款音量条。
 
-## 最新正式版：0.3.182
+## 最新正式版：0.3.187
 
-- 控制中心页面编辑会话、材质恢复和按变化增量刷新。
-- 诊断日志脱敏、容量/时长限制与取消清理。
-- 5G 磁贴状态预览、组合卡片成员缩放和完整轨道滑条裁剪。
-- 音量菜单填充贴合描边内缘，并跟随原生动态轮廓更新。
+- HyperOS 移动信号格优先读取 `SignalStrength.getMiuiLevel()`，与系统原生等级来源保持一致。
+- MIUI 等级不可用时明确标记不可用，不以 Android 通用等级替代。
+- Wi-Fi 强度仍独立显示；双排信号仅显示移动网络等级。
 
-[下载正式 APK](https://github.com/Xposed-Modules-Repo/io.github.yudigaga.fusionstatusbar/releases/tag/196-0.3.182) · [完整更新说明](https://github.com/yudigaga/FusionStatusBar/blob/v0.3.182/docs/release-v0.3.182.md)
+[下载正式 APK](https://github.com/Xposed-Modules-Repo/io.github.yudigaga.fusionstatusbar/releases/tag/201-0.3.187) · [完整更新说明](https://github.com/yudigaga/FusionStatusBar/blob/v0.3.187/docs/release-v0.3.187.md)
 
-本版 Debug/Release 各 953 项单元测试通过，lint 各 0 错误、67 条警告；未进行本版实体设备安装、SystemUI 注入或目标 ROM 验收。
+本版 Debug/Release 各 1006 项单元测试通过，lint 各 0 错误、66 条警告；未进行本版实体设备安装、SystemUI 注入或目标 ROM 验收。
+
+正式 APK SHA-256：`05a3fa5e9f3c75a6dbca9615c3be709a28099d3e3d5b6c2154cb295fc4e8e90e`。签名证书 SHA-256：`ccfaf42f8f14bb36973aeb971572fcc956a256196f68ff088340dfa7eca96fe2`。
 
 ## 0.3.173 更新（历史）
 
