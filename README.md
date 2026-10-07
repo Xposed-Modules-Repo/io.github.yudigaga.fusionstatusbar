@@ -1,6 +1,6 @@
 # FusionStatusBar 状态栏融合图标
 
-FusionStatusBar 是面向系统界面的 LibXposed 模块，提供融合图标、双排状态栏、时钟天气与设备遥测，以及控制中心布局和外观编辑。
+FusionStatusBar 是面向 MIUI/HyperOS 的 LibXposed 模块，提供融合图标、双排状态栏、时钟天气与设备遥测、控制中心布局和外观编辑，以及桌面应用隐藏与手势。
 
 ## 功能
 
@@ -9,18 +9,19 @@ FusionStatusBar 是面向系统界面的 LibXposed 模块，提供融合图标�
 - 编辑控制中心的布局、磁贴与外观，并提供预览和配置备份。
 - 横屏自定义布局、分组成员图标缩放、统一容器材质与全局描边。
 - 分别调整电源菜单、音量菜单、通知中心与悬浮通知外观，支持三条电源菜单和短款音量条。
+- 隐藏桌面应用图标，自定义十种桌面手势，选择系统动作、应用、活动、快捷方式和功能切换。
+- 设置页面、底部导航和公共弹窗使用 Compose/Miuix 控件。
 
-## 最新正式版：0.3.187
+## 最新正式版：0.3.192
 
-- HyperOS 移动信号格优先读取 `SignalStrength.getMiuiLevel()`，与系统原生等级来源保持一致。
-- MIUI 等级不可用时明确标记不可用，不以 Android 通用等级替代。
-- Wi-Fi 强度仍独立显示；双排信号仅显示移动网络等级。
+- 本次包含远端 0.3.187 之后的全部变化：0.3.188 新增桌面隐藏与手势，0.3.189 增加重启桌面及冻结应用选择，0.3.190 增加应用搜索和彩色图标，0.3.191-0.3.192 完成五个页面、导航与公共弹窗的 Compose/Miuix 迁移。
+- 保留配置、Hook、控制中心画布、草稿、撤销/重做、锁定和明确推送行为，完善小屏、大字体、深色主题及输入校验。
 
-[下载正式 APK](https://github.com/Xposed-Modules-Repo/io.github.yudigaga.fusionstatusbar/releases/tag/201-0.3.187) · [完整更新说明](https://github.com/yudigaga/FusionStatusBar/blob/v0.3.187/docs/release-v0.3.187.md)
+[下载正式 APK](https://github.com/Xposed-Modules-Repo/io.github.yudigaga.fusionstatusbar/releases/tag/206-0.3.192) · [0.3.187 到 0.3.192 完整更新说明](https://github.com/yudigaga/FusionStatusBar/blob/v0.3.192/docs/release-notes-v0.3.192.md)
 
-本版 Debug/Release 各 1006 项单元测试通过，lint 各 0 错误、66 条警告；未进行本版实体设备安装、SystemUI 注入或目标 ROM 验收。
+本版归档 Debug/Release 各 1071 项单元测试通过，lint 各 0 错误、86 条警告；未进行本版实体设备安装、Launcher/SystemUI/安全中心注入或目标 ROM 验收。
 
-正式 APK SHA-256：`05a3fa5e9f3c75a6dbca9615c3be709a28099d3e3d5b6c2154cb295fc4e8e90e`。签名证书 SHA-256：`ccfaf42f8f14bb36973aeb971572fcc956a256196f68ff088340dfa7eca96fe2`。
+正式 APK SHA-256：`1d91fe9d519b7e181b22f6e264e8abeee593ac00bbe95760bba94393a43f595b`。签名证书 SHA-256：`ccfaf42f8f14bb36973aeb971572fcc956a256196f68ff088340dfa7eca96fe2`。
 
 ## 0.3.173 更新（历史）
 
@@ -33,7 +34,8 @@ FusionStatusBar 是面向系统界面的 LibXposed 模块，提供融合图标�
 ## 适用范围
 
 - Android 13（API 33）及以上，使用支持 LibXposed API 102 的框架。
-- 作用域为 `com.android.systemui`；设备存在 `miui.systemui.plugin` 时也勾选该作用域。
+- 作用域为 `com.android.systemui`、`miui.systemui.plugin`、`com.miui.home` 和 `com.miui.securitycenter`。从 0.3.187 升级后请启用新增桌面与安全中心作用域，并重启对应进程或设备。
+- 侧边栏动作需要先开启系统侧边栏；“重启系统桌面”需要 root 授权。
 - SystemUI 与厂商插件实现存在差异，最低 Android 版本不代表所有 ROM 都已验证兼容。
 
 ## 安装与启用
