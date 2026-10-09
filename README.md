@@ -12,16 +12,19 @@ FusionStatusBar 是面向 MIUI/HyperOS 的 LibXposed 模块，提供融合图标
 - 隐藏桌面应用图标，自定义十种桌面手势，选择系统动作、应用、活动、快捷方式和功能切换。
 - 设置页面、底部导航和公共弹窗使用 Compose/Miuix 控件。
 
-## 最新正式版：0.3.192
+## 最新正式版：0.3.193
 
-- 本次包含远端 0.3.187 之后的全部变化：0.3.188 新增桌面隐藏与手势，0.3.189 增加重启桌面及冻结应用选择，0.3.190 增加应用搜索和彩色图标，0.3.191-0.3.192 完成五个页面、导航与公共弹窗的 Compose/Miuix 迁移。
-- 保留配置、Hook、控制中心画布、草稿、撤销/重做、锁定和明确推送行为，完善小屏、大字体、深色主题及输入校验。
+- 修复控制中心展开动画中网格高度被恢复成单行、编辑行位置异常的问题，动画稳定后重新校正高度。
+- SystemUI 和小米桌面持久保存运行时配置；桌面手势直接向 SystemUI 发送认证广播，正常运行不再依赖设置应用 Provider 队列或后台进程。
+- 状态回报使用设置页的动态接收器，快捷方式目录及控制中心预览按需刷新。
 
-[下载正式 APK](https://github.com/Xposed-Modules-Repo/io.github.yudigaga.fusionstatusbar/releases/tag/206-0.3.192) · [0.3.187 到 0.3.192 完整更新说明](https://github.com/yudigaga/FusionStatusBar/blob/v0.3.192/docs/release-notes-v0.3.192.md)
+[下载正式 APK](https://github.com/Xposed-Modules-Repo/io.github.yudigaga.fusionstatusbar/releases/tag/207-0.3.193) · [0.3.192 到 0.3.193 完整更新说明](https://github.com/yudigaga/FusionStatusBar/blob/v0.3.193/docs/release-notes-v0.3.193.md)
 
-本版归档 Debug/Release 各 1071 项单元测试通过，lint 各 0 错误、86 条警告；未进行本版实体设备安装、Launcher/SystemUI/安全中心注入或目标 ROM 验收。
+首次升级需保持应用包和 LSPosed 模块启用，重启 SystemUI 与小米桌面，再打开 FusionStatusBar 一次同步配置和桥接密钥。确认手势生效后可停用设置应用包；LSPosed 模块仍需启用，修改配置前重新启用应用包。保存时某个宿主未运行，需在其启动后再次打开设置同步。
 
-正式 APK SHA-256：`1d91fe9d519b7e181b22f6e264e8abeee593ac00bbe95760bba94393a43f595b`。签名证书 SHA-256：`ccfaf42f8f14bb36973aeb971572fcc956a256196f68ff088340dfa7eca96fe2`。
+本版归档 Debug/Release 各 1098 项单元测试通过，lint 各 0 错误、86 条警告；未进行本版实体设备安装、Launcher/SystemUI/安全中心注入或目标 ROM 验收。
+
+正式 APK SHA-256：`05d32a0735c9874d194172d5fc795e654852731a4778f1a8e223b50fc1034608`。签名证书 SHA-256：`ccfaf42f8f14bb36973aeb971572fcc956a256196f68ff088340dfa7eca96fe2`。
 
 ## 0.3.173 更新（历史）
 
