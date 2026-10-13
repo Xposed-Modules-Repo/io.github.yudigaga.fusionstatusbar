@@ -11,20 +11,21 @@ FusionStatusBar 是面向 MIUI/HyperOS 的 LibXposed 模块，提供融合图标
 - 分别调整电源菜单、音量菜单、通知中心与悬浮通知外观，支持三条电源菜单和短款音量条。
 - 隐藏桌面应用图标，自定义十种桌面手势，选择系统动作、应用、活动、快捷方式和功能切换。
 - 设置页面、底部导航和公共弹窗使用 Compose/Miuix 控件。
+- 杂项页提供可选的链式启动确认移除，设置页可切换毛玻璃悬浮底栏。
 
-## 最新正式版：0.3.193
+## 最新正式版：0.3.197
 
-- 修复控制中心展开动画中网格高度被恢复成单行、编辑行位置异常的问题，动画稳定后重新校正高度。
-- SystemUI 和小米桌面持久保存运行时配置；桌面手势直接向 SystemUI 发送认证广播，正常运行不再依赖设置应用 Provider 队列或后台进程。
-- 状态回报使用设置页的动态接收器，快捷方式目录及控制中心预览按需刷新。
+- 汇总远端 0.3.193 之后的全部变化：杂项页面、链式启动开关、毛玻璃悬浮底栏及六页导航布局。
+- 链式启动最终在 system_server 的 MIUI 确认入口处理；开启后放行，关闭后保留原生行为。早期安全中心自动点击方案已移除。
+- 修正作用域，保留必需的 `system`，移除不需要的 `android`；APK 作用域与源码一致性纳入构建检查。
 
-[下载正式 APK](https://github.com/Xposed-Modules-Repo/io.github.yudigaga.fusionstatusbar/releases/tag/207-0.3.193) · [0.3.192 到 0.3.193 完整更新说明](https://github.com/yudigaga/FusionStatusBar/blob/v0.3.193/docs/release-notes-v0.3.193.md)
+[下载正式 APK](https://github.com/Xposed-Modules-Repo/io.github.yudigaga.fusionstatusbar/releases/tag/211-0.3.197) · [0.3.193 到 0.3.197 完整更新说明](https://github.com/yudigaga/FusionStatusBar/blob/v0.3.197/docs/release-notes-v0.3.197.md)
 
-首次升级需保持应用包和 LSPosed 模块启用，重启 SystemUI 与小米桌面，再打开 FusionStatusBar 一次同步配置和桥接密钥。确认手势生效后可停用设置应用包；LSPosed 模块仍需启用，修改配置前重新启用应用包。保存时某个宿主未运行，需在其启动后再次打开设置同步。
+升级后在 LSPosed 明确勾选 **System（system / system_server）** 并重启手机，再打开 FusionStatusBar 同步配置。旧 `android` 选项可取消。“移除链式启动弹窗”默认关闭，需要时在“杂项”开启；修改杂项配置时应保持设置应用包可用。
 
-本版归档 Debug/Release 各 1098 项单元测试通过，lint 各 0 错误、86 条警告；未进行本版实体设备安装、Launcher/SystemUI/安全中心注入或目标 ROM 验收。
+本版归档 Debug/Release 各 1116 项单元测试通过，lint 各 0 错误、97 条警告；未进行本版设备安装、system_server/SystemUI 注入、目标 ROM 或功耗验收。
 
-正式 APK SHA-256：`05d32a0735c9874d194172d5fc795e654852731a4778f1a8e223b50fc1034608`。签名证书 SHA-256：`ccfaf42f8f14bb36973aeb971572fcc956a256196f68ff088340dfa7eca96fe2`。
+正式 APK SHA-256：`119122b8e9d3c7db4a5d9354fabdada5170963777be51f2fb95efbcc33a5b7f9`。签名证书 SHA-256：`ccfaf42f8f14bb36973aeb971572fcc956a256196f68ff088340dfa7eca96fe2`。
 
 ## 0.3.173 更新（历史）
 
@@ -37,7 +38,7 @@ FusionStatusBar 是面向 MIUI/HyperOS 的 LibXposed 模块，提供融合图标
 ## 适用范围
 
 - Android 13（API 33）及以上，使用支持 LibXposed API 102 的框架。
-- 作用域为 `com.android.systemui`、`miui.systemui.plugin`、`com.miui.home` 和 `com.miui.securitycenter`。从 0.3.187 升级后请启用新增桌面与安全中心作用域，并重启对应进程或设备。
+- 作用域为 `system`、`com.android.systemui`、`miui.systemui.plugin`、`com.miui.home` 和 `com.miui.securitycenter`。从 0.3.193 升级后请新增勾选 System（system_server），随后重启手机。
 - 侧边栏动作需要先开启系统侧边栏；“重启系统桌面”需要 root 授权。
 - SystemUI 与厂商插件实现存在差异，最低 Android 版本不代表所有 ROM 都已验证兼容。
 
