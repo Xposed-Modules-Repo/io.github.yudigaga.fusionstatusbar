@@ -13,20 +13,20 @@ FusionStatusBar 是面向 MIUI/HyperOS 的 LibXposed 模块，提供融合图标
 - 设置页面、底部导航和公共弹窗使用 Compose/Miuix 控件。
 - 杂项页提供可选的链式启动确认移除，设置页可切换毛玻璃悬浮底栏。
 
-## 最新正式版：0.3.198
+## 最新正式版：0.3.199
 
-- 基于 0.3.197 美化融合图标，调整圆角电量弧线、数字、Wi-Fi、闪电及信号圆点的比例和间距。
-- 充电、快充、省电和危险电量采用对应状态配色，文字与网络图形继续跟随状态栏颜色。
-- 保留现有预览界面与切换方式、Wi-Fi 独立强度、双卡信号、各部分独立位置和缩放设置。
-- 快充根据系统提供的充电能力字段分类，缺少字段时显示普通充电；省电状态随系统设置更新。
+- 版本号 `0.3.199`，构建号 `213`。统一融合图标中 `5G` 文字与 Wi-Fi 图形的可见宽度和高度。
+- 在顶部、中部、底部位置及不同粗细、独立网络缩放下保持尺寸一致，继续使用已有位置与缩放设置。
+- 短网络标签保留自然宽度，长标签限制在相同网络显示范围内。
+- 网络标签、粗细和颜色切换时正确刷新文字，保留现有预览界面与切换方式。
 
-[下载正式 APK](https://github.com/Xposed-Modules-Repo/io.github.yudigaga.fusionstatusbar/releases/tag/212-0.3.198) · [0.3.198 更新说明与验证范围](https://github.com/yudigaga/FusionStatusBar/blob/v0.3.198/docs/release-notes-v0.3.198.md)
+[下载正式 APK](https://github.com/Xposed-Modules-Repo/io.github.yudigaga.fusionstatusbar/releases/tag/213-0.3.199) · [0.3.199 更新说明与验证范围](https://github.com/yudigaga/FusionStatusBar/blob/v0.3.199/docs/release-notes-v0.3.199.md)
 
-使用原正式证书签名，可覆盖 0.3.197。更新后重启系统界面或设备，再打开 FusionStatusBar 同步配置。已有图标位置与缩放设置保留；从更早版本升级时，仍按 [0.3.197 升级说明](https://github.com/yudigaga/FusionStatusBar/blob/v0.3.197/docs/release-notes-v0.3.197.md) 核对 **System（system / system_server）** 作用域。
+使用原正式证书签名，可覆盖 0.3.198。更新后重启系统界面或设备，再打开 FusionStatusBar 同步配置。已有图标位置与缩放设置保留；从更早版本升级时，仍按 [0.3.197 升级说明](https://github.com/yudigaga/FusionStatusBar/blob/v0.3.197/docs/release-notes-v0.3.197.md) 核对 **System（system / system_server）** 作用域。
 
-本次本地 Debug/Release 各 46 项相关测试通过，工具测试 28 项通过，lint 各 0 错误、99 条警告；并非本地完整测试集。远端完整 CI 以发布提交的 GitHub Actions 为准。本版尚未进行设备安装、Hook 注入、目标 ROM 或实机性能验收。
+本次本地 Debug/Release 各 31 项相关测试通过，工具测试 28 项通过，lint 各 0 错误、99 条警告；并非本地完整测试集。远端完整 CI 以发布提交的 GitHub Actions 为准。本版尚未进行设备安装、Hook 注入、目标 ROM 或实机性能验收。
 
-正式 APK SHA-256：`3315f67407fce7735b472e4d988b8b0ca345a6dc49a72f58959c6be9bfbafcfe`。签名证书 SHA-256：`ccfaf42f8f14bb36973aeb971572fcc956a256196f68ff088340dfa7eca96fe2`。
+正式 APK SHA-256：`59d81b0161c5322e7c7c14822e475e574bed20ce95d6ed2c634c7d6e56d46df0`。签名证书 SHA-256：`ccfaf42f8f14bb36973aeb971572fcc956a256196f68ff088340dfa7eca96fe2`。
 
 ## 0.3.173 更新（历史）
 
