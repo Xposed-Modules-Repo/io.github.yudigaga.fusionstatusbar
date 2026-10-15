@@ -13,20 +13,20 @@ FusionStatusBar 是面向 MIUI/HyperOS 的 LibXposed 模块，提供融合图标
 - 设置页面、底部导航和公共弹窗使用 Compose/Miuix 控件。
 - 杂项页提供可选的链式启动确认移除，设置页可切换毛玻璃悬浮底栏。
 
-## 最新正式版：0.3.199
+## 最新正式版：0.5.0
 
-- 版本号 `0.3.199`，构建号 `213`。统一融合图标中 `5G` 文字与 Wi-Fi 图形的可见宽度和高度。
-- 在顶部、中部、底部位置及不同粗细、独立网络缩放下保持尺寸一致，继续使用已有位置与缩放设置。
-- 短网络标签保留自然宽度，长标签限制在相同网络显示范围内。
-- 网络标签、粗细和颜色切换时正确刷新文字，保留现有预览界面与切换方式。
+- 版本号 `0.5.0`，构建号 `214`。版本号末位满 100 向中间位进 1，中间位满 10 向主版本进 1，原构建版本 `0.3.200` 按此规则规范为 `0.5.0`。
+- Wi-Fi 与移动网络文字可分别上下微调，范围均为 ±20%，可独立保存设置。
+- 配置备份兼容新增的网络文字偏移设置，导入旧备份时保留兼容行为。
+- 修复锁屏状态栏高度与裁剪问题，使融合图标在锁屏下正确显示。
 
-[下载正式 APK](https://github.com/Xposed-Modules-Repo/io.github.yudigaga.fusionstatusbar/releases/tag/213-0.3.199) · [0.3.199 更新说明与验证范围](https://github.com/yudigaga/FusionStatusBar/blob/v0.3.199/docs/release-notes-v0.3.199.md)
+[下载正式 APK](https://github.com/Xposed-Modules-Repo/io.github.yudigaga.fusionstatusbar/releases/tag/214-0.5.0) · [0.5.0 更新说明与验证范围](https://github.com/yudigaga/FusionStatusBar/blob/v0.5.0/docs/release-notes-v0.5.0.md)
 
-使用原正式证书签名，可覆盖 0.3.198。更新后重启系统界面或设备，再打开 FusionStatusBar 同步配置。已有图标位置与缩放设置保留；从更早版本升级时，仍按 [0.3.197 升级说明](https://github.com/yudigaga/FusionStatusBar/blob/v0.3.197/docs/release-notes-v0.3.197.md) 核对 **System（system / system_server）** 作用域。
+使用原正式证书签名，可覆盖 0.3.199。更新后重启系统界面或设备，再打开 FusionStatusBar 同步配置。已有图标位置与缩放设置保留；从更早版本升级时，仍按 [0.3.197 升级说明](https://github.com/yudigaga/FusionStatusBar/blob/v0.3.197/docs/release-notes-v0.3.197.md) 核对 **System（system / system_server）** 作用域。
 
-本次本地 Debug/Release 各 31 项相关测试通过，工具测试 28 项通过，lint 各 0 错误、99 条警告；并非本地完整测试集。远端完整 CI 以发布提交的 GitHub Actions 为准。本版尚未进行设备安装、Hook 注入、目标 ROM 或实机性能验收。
+本版完整本地测试、lint、APK 元数据与签名验证结果见 [0.5.0 更新说明](https://github.com/yudigaga/FusionStatusBar/blob/v0.5.0/docs/release-notes-v0.5.0.md)；远端 CI 以发布提交的 GitHub Actions 为准，尚未实机验收。
 
-正式 APK SHA-256：`59d81b0161c5322e7c7c14822e475e574bed20ce95d6ed2c634c7d6e56d46df0`。签名证书 SHA-256：`ccfaf42f8f14bb36973aeb971572fcc956a256196f68ff088340dfa7eca96fe2`。
+正式 APK 的最终 SHA-256 见 [源码发布页](https://github.com/yudigaga/FusionStatusBar/releases/tag/v0.5.0)与[构建记录](https://github.com/yudigaga/FusionStatusBar/blob/v0.5.0/artifacts/release-v0.5.0.json)。签名证书 SHA-256：`ccfaf42f8f14bb36973aeb971572fcc956a256196f68ff088340dfa7eca96fe2`。
 
 ## 0.3.173 更新（历史）
 
