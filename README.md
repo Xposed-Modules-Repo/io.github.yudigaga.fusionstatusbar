@@ -13,19 +13,20 @@ FusionStatusBar 是面向 MIUI/HyperOS 的 LibXposed 模块，提供融合图标
 - 设置页面、底部导航和公共弹窗使用 Compose/Miuix 控件。
 - 杂项页提供可选的链式启动确认移除，设置页可切换毛玻璃悬浮底栏。
 
-## 最新正式版：0.3.197
+## 最新正式版：0.3.198
 
-- 汇总远端 0.3.193 之后的全部变化：杂项页面、链式启动开关、毛玻璃悬浮底栏及六页导航布局。
-- 链式启动最终在 system_server 的 MIUI 确认入口处理；开启后放行，关闭后保留原生行为。早期安全中心自动点击方案已移除。
-- 修正作用域，保留必需的 `system`，移除不需要的 `android`；APK 作用域与源码一致性纳入构建检查。
+- 基于 0.3.197 美化融合图标，调整圆角电量弧线、数字、Wi-Fi、闪电及信号圆点的比例和间距。
+- 充电、快充、省电和危险电量采用对应状态配色，文字与网络图形继续跟随状态栏颜色。
+- 保留现有预览界面与切换方式、Wi-Fi 独立强度、双卡信号、各部分独立位置和缩放设置。
+- 快充根据系统提供的充电能力字段分类，缺少字段时显示普通充电；省电状态随系统设置更新。
 
-[下载正式 APK](https://github.com/Xposed-Modules-Repo/io.github.yudigaga.fusionstatusbar/releases/tag/211-0.3.197) · [0.3.193 到 0.3.197 完整更新说明](https://github.com/yudigaga/FusionStatusBar/blob/v0.3.197/docs/release-notes-v0.3.197.md)
+[下载正式 APK](https://github.com/Xposed-Modules-Repo/io.github.yudigaga.fusionstatusbar/releases/tag/212-0.3.198) · [0.3.198 更新说明与验证范围](https://github.com/yudigaga/FusionStatusBar/blob/v0.3.198/docs/release-notes-v0.3.198.md)
 
-升级后在 LSPosed 明确勾选 **System（system / system_server）** 并重启手机，再打开 FusionStatusBar 同步配置。旧 `android` 选项可取消。“移除链式启动弹窗”默认关闭，需要时在“杂项”开启；修改杂项配置时应保持设置应用包可用。
+使用原正式证书签名，可覆盖 0.3.197。更新后重启系统界面或设备，再打开 FusionStatusBar 同步配置。已有图标位置与缩放设置保留；从更早版本升级时，仍按 [0.3.197 升级说明](https://github.com/yudigaga/FusionStatusBar/blob/v0.3.197/docs/release-notes-v0.3.197.md) 核对 **System（system / system_server）** 作用域。
 
-本版归档 Debug/Release 各 1116 项单元测试通过，lint 各 0 错误、97 条警告；未进行本版设备安装、system_server/SystemUI 注入、目标 ROM 或功耗验收。
+本次本地 Debug/Release 各 46 项相关测试通过，工具测试 28 项通过，lint 各 0 错误、99 条警告；并非本地完整测试集。远端完整 CI 以发布提交的 GitHub Actions 为准。本版尚未进行设备安装、Hook 注入、目标 ROM 或实机性能验收。
 
-正式 APK SHA-256：`119122b8e9d3c7db4a5d9354fabdada5170963777be51f2fb95efbcc33a5b7f9`。签名证书 SHA-256：`ccfaf42f8f14bb36973aeb971572fcc956a256196f68ff088340dfa7eca96fe2`。
+正式 APK SHA-256：`3315f67407fce7735b472e4d988b8b0ca345a6dc49a72f58959c6be9bfbafcfe`。签名证书 SHA-256：`ccfaf42f8f14bb36973aeb971572fcc956a256196f68ff088340dfa7eca96fe2`。
 
 ## 0.3.173 更新（历史）
 
