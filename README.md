@@ -13,20 +13,19 @@ FusionStatusBar 是面向 MIUI/HyperOS 的 LibXposed 模块，提供融合图标
 - 设置页面、底部导航和公共弹窗使用 Compose/Miuix 控件。
 - 杂项页提供可选的链式启动确认移除，设置页可切换毛玻璃悬浮底栏。
 
-## 最新正式版：0.5.3
+## 最新正式版：0.5.9
 
-- 版本号 `0.5.3`，构建号 `217`。版本号末位满 100 向中间位进 1，中间位满 10 向主版本进 1，例如 `0.5.99 → 0.6.0`、`0.9.99 → 1.0.0`。
-- 修复通知中心时钟在文字、秒钟和天气刷新后位置跳动或上下偏移累积的问题，保留系统当前展开动画位置。
-- 自定义通知时钟在下拉前半段隐藏，后半段平滑渐显；收起时对称渐隐，并保留系统自身的透明度动画。
-- 优化控制中心模糊动画和柔光玻璃的重复刷新：复用未变化的渐变，减少组件背景扫描和重绘；尺寸、强度或显示密度变化时仍会更新。
+- 版本号 `0.5.9`，构建号 `223`，沿用末位满 100、中间位满 10 的版本进位规则。
+- 普通状态栏融合图标保持既有缩放；控制中心真实与模拟状态栏副本根据各自宿主区域独立缩放和测量。
+- 控制中心副本按自身电池容器居中，避免套用普通状态栏双排高度及跨槽位偏移；普通状态栏双排布局保持原样。
 
-[下载正式 APK](https://github.com/Xposed-Modules-Repo/io.github.yudigaga.fusionstatusbar/releases/tag/217-0.5.3) · [0.5.3 更新说明与验证范围](https://github.com/yudigaga/FusionStatusBar/blob/v0.5.3/docs/release-notes-v0.5.3.md)
+[下载正式 APK](https://github.com/Xposed-Modules-Repo/io.github.yudigaga.fusionstatusbar/releases/tag/223-0.5.9) · [0.5.9 更新说明与验证范围](https://github.com/yudigaga/FusionStatusBar/blob/v0.5.9/docs/release-notes-v0.5.9.md)
 
-使用原正式证书签名，可覆盖更新 0.5.0。更新后重启系统界面或设备，再打开 FusionStatusBar 同步配置。已有图标位置与缩放设置保留；从更早版本升级时，仍按 [0.3.197 升级说明](https://github.com/yudigaga/FusionStatusBar/blob/v0.3.197/docs/release-notes-v0.3.197.md) 核对 **System（system / system_server）** 作用域。
+使用原正式证书签名，可覆盖更新 0.5.3。更新后重启系统界面或设备，再打开 FusionStatusBar 同步配置。已有图标位置与缩放设置保留；从更早版本升级时，仍按 [0.3.197 升级说明](https://github.com/yudigaga/FusionStatusBar/blob/v0.3.197/docs/release-notes-v0.3.197.md) 核对 **System（system / system_server）** 作用域。
 
-本版完整本地测试 Debug、Release 各 `1204` 项通过，工具测试 `28` 项通过；两种构建 lint 均为 `0` 错误，警告分别为 `99` / `98` 条。APK 元数据与签名验证结果见 [0.5.3 更新说明](https://github.com/yudigaga/FusionStatusBar/blob/v0.5.3/docs/release-notes-v0.5.3.md)；远端 CI 以发布提交的 GitHub Actions 为准，尚未进行设备安装、Hook 注入、目标 ROM 功能或实机性能验收。
+本次构建未运行 Debug/Release 单元测试或完整 lint；`:app:assembleRelease` 运行了 `lintVitalRelease`。本次发布前运行的 Python 工具测试 `28` 项通过。签名、APK 元数据和验证范围见 [0.5.9 更新说明](https://github.com/yudigaga/FusionStatusBar/blob/v0.5.9/docs/release-notes-v0.5.9.md)。尚未进行设备安装、Hook 注入或目标 ROM 验收。
 
-正式 APK 的 SHA-256：`fc49b1a8600a44e331905a2f93a2a4c212f5301a354aa6c3d9cdf558a85c77e5`。完整来源见[源码发布页](https://github.com/yudigaga/FusionStatusBar/releases/tag/v0.5.3)与[构建记录](https://github.com/yudigaga/FusionStatusBar/blob/v0.5.3/artifacts/release-v0.5.3.json)。签名证书 SHA-256：`ccfaf42f8f14bb36973aeb971572fcc956a256196f68ff088340dfa7eca96fe2`。
+正式 APK SHA-256：`301f02e81b1e6518a61d29c3ba097bf3753290b3a74df0461fb1e0961bb8b902`。完整来源见[源码发布页](https://github.com/yudigaga/FusionStatusBar/releases/tag/v0.5.9)与[构建记录](https://github.com/yudigaga/FusionStatusBar/blob/v0.5.9/artifacts/release-v0.5.9.json)。签名证书 SHA-256：`ccfaf42f8f14bb36973aeb971572fcc956a256196f68ff088340dfa7eca96fe2`。
 
 ## 0.3.173 更新（历史）
 
