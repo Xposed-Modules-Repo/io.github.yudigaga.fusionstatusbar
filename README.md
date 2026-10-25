@@ -13,23 +13,23 @@ FusionStatusBar 是面向 MIUI/HyperOS 的 LibXposed 模块，提供融合图标
 - 设置页面、底部导航和公共弹窗使用 Compose/Miuix 控件。
 - 杂项页提供可选的链式启动确认移除，设置页可切换毛玻璃悬浮底栏。
 
-## 最新正式版：0.5.13
+## 最新正式版：0.5.15
 
-- 版本号 `0.5.13`，构建号 `227`，沿用末位满 100、中间位满 10 的版本进位规则。
-- 高光玻璃明确采用 Canvas 兼容绘制，调整中性底色与强度透明度，并保留关闭、零强度及重新启用时的恢复行为。
-- 自动高光的日夜模式统一使用渐隐软边与局部方向反光；手动柔光玻璃保持原有样式。
-- 通知反光随背景共同处理实际高度、RTL 宽度、展开裁剪和原生淡出，修复主题切换后的背景恢复与渐变缓存重复重建。
-- 修复跨 classloader 的控制中心能力归属，避免后台探测覆盖有效面板及日期、运营商隐藏能力误报。
+- 版本号 `0.5.15`，构建号 `229`，沿用末位满 100、中间位满 10 的版本进位规则。
+- 玻璃绘制复用未变化的几何与描边轮廓，稳定磁贴跳过重复的原生模式查询；尺寸、圆角或原生路径变化时仍更新，编辑及重新启用时保留背景恢复。
+- 自定义控制中心网格的承载视图采用更快的竖向展开与回收弹簧策略，去除该范围内的分排等待，保留原生手势进度、目标值和完成回调。
+- 展开、收起的 spring response 上限分别为 `0.30`、`0.20`；这是弹簧参数，不是固定的 `300ms`、`200ms` 总时长。原本更快的有效配置及普通、镜像面板保留原生路径。
+- 继续保留自动日夜高光软边、手动柔光玻璃样式及通知背景裁剪、淡出与主题恢复。
 
-[下载正式 APK](https://github.com/Xposed-Modules-Repo/io.github.yudigaga.fusionstatusbar/releases/tag/227-0.5.13) · [0.5.13 更新说明与验证范围](https://github.com/yudigaga/FusionStatusBar/blob/v0.5.13/docs/release-notes-v0.5.13.md)
+[下载正式 APK](https://github.com/Xposed-Modules-Repo/io.github.yudigaga.fusionstatusbar/releases/tag/229-0.5.15) · [0.5.15 更新说明与验证范围](https://github.com/yudigaga/FusionStatusBar/blob/v0.5.15/docs/release-notes-v0.5.15.md)
 
-使用原正式证书签名，可覆盖更新 0.5.9。更新后重启系统界面或设备，再打开 FusionStatusBar 同步配置。已有图标位置与缩放设置保留；从更早版本升级时，仍按 [0.3.197 升级说明](https://github.com/yudigaga/FusionStatusBar/blob/v0.3.197/docs/release-notes-v0.3.197.md) 核对 **System（system / system_server）** 作用域。
+使用原正式证书签名，可覆盖更新 0.5.13。更新后重启系统界面或设备，再打开 FusionStatusBar 同步配置。已有图标位置与缩放设置保留；从更早版本升级时，仍按 [0.3.197 升级说明](https://github.com/yudigaga/FusionStatusBar/blob/v0.3.197/docs/release-notes-v0.3.197.md) 核对 **System（system / system_server）** 作用域。
 
-本版定向 Debug 回归 `221` 项、`40` 个测试类通过，失败、错误和跳过均为 `0`；Release lint 为 `0` 错误、`98` 条警告。本次发布前另有 `28` 项 Python 工具测试通过。完整 Debug/Release 单元测试、Debug lint 及本版实机验证尚未执行；远端 CI 以发布提交的 GitHub Actions 为准。签名、APK 元数据和完整验证范围见 [0.5.13 更新说明](https://github.com/yudigaga/FusionStatusBar/blob/v0.5.13/docs/release-notes-v0.5.13.md)。
+本版定向 Debug 回归 `339` 项、`52` 个测试类通过，失败、错误和跳过均为 `0`；Release lint 为 `0` 错误、`98` 条警告。本次发布前另有 `28` 项 Python 工具测试通过。完整 Debug/Release 单元测试、Debug lint 及本版实机验证尚未执行；本地操作计数与队列测试不代表目标手机帧率或手势效果。远端 CI 以发布提交的 GitHub Actions 为准。签名、APK 元数据和完整验证范围见 [0.5.15 更新说明](https://github.com/yudigaga/FusionStatusBar/blob/v0.5.15/docs/release-notes-v0.5.15.md)。
 
 当前高光玻璃没有实现真实背景折射，尚未完成目标 ROM 的真实 MiGlass 绘制、视觉和稳定性验收。
 
-正式 APK SHA-256：`edb7a04bb2245a2b8e5e6dd63efcf7688f93fcadafb8b3169d5d3e0a5b60a893`。完整来源见[源码发布页](https://github.com/yudigaga/FusionStatusBar/releases/tag/v0.5.13)与[构建记录](https://github.com/yudigaga/FusionStatusBar/blob/v0.5.13/artifacts/release-v0.5.13.json)。签名证书 SHA-256：`ccfaf42f8f14bb36973aeb971572fcc956a256196f68ff088340dfa7eca96fe2`。
+正式 APK SHA-256：`03f1f84cdc75ce7ecff8599d2af246b6196f8e2d9c5633017e4989a15e1172da`。完整来源见[源码发布页](https://github.com/yudigaga/FusionStatusBar/releases/tag/v0.5.15)与[构建记录](https://github.com/yudigaga/FusionStatusBar/blob/v0.5.15/artifacts/release-v0.5.15.json)。签名证书 SHA-256：`ccfaf42f8f14bb36973aeb971572fcc956a256196f68ff088340dfa7eca96fe2`。
 
 ## 0.3.173 更新（历史）
 
