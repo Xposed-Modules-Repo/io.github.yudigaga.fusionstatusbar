@@ -9,27 +9,27 @@ FusionStatusBar 是面向 MIUI/HyperOS 的 LibXposed 模块，提供融合图标
 - 编辑控制中心的布局、磁贴与外观，并提供预览和配置备份。
 - 横屏自定义布局、分组成员图标缩放、统一容器材质与全局描边。
 - 分别调整电源菜单、音量菜单、通知中心与悬浮通知外观，支持三条电源菜单和短款音量条。
-- 隐藏桌面应用图标，自定义十种桌面手势，选择系统动作、应用、活动、快捷方式和功能切换。
+- 隐藏桌面应用图标，自定义桌面手势与返回停顿，选择系统动作、应用、活动、快捷方式和功能切换。
 - 设置页面、底部导航和公共弹窗使用 Compose/Miuix 控件。
 - 杂项页提供可选的链式启动确认移除，设置页可切换毛玻璃悬浮底栏。
 
-## 最新正式版：0.5.15
+## 最新正式版：0.5.20
 
-- 版本号 `0.5.15`，构建号 `229`，沿用末位满 100、中间位满 10 的版本进位规则。
-- 玻璃绘制复用未变化的几何与描边轮廓，稳定磁贴跳过重复的原生模式查询；尺寸、圆角或原生路径变化时仍更新，编辑及重新启用时保留背景恢复。
-- 自定义控制中心网格的承载视图采用更快的竖向展开与回收弹簧策略，去除该范围内的分排等待，保留原生手势进度、目标值和完成回调。
-- 展开、收起的 spring response 上限分别为 `0.30`、`0.20`；这是弹簧参数，不是固定的 `300ms`、`200ms` 总时长。原本更快的有效配置及普通、镜像面板保留原生路径。
-- 继续保留自动日夜高光软边、手动柔光玻璃样式及通知背景裁剪、淡出与主题恢复。
+- 版本号 `0.5.20`，构建号 `234`，沿用末位满 100、中间位满 10 的版本进位规则。
+- 新增“返回停顿”：有效侧滑停稳并就绪后，松手执行所选动作。拉起时沿用系统反馈，就绪时给出第二段震动提示，执行动作时不再补震；快速侧滑保留系统返回，进入等待后提前松手或明显回撤会取消，避免误返回。
+- 在“桌面 → 桌面手势 → 返回停顿”设置距离和等待时间。距离默认跟随系统，可改为 `16～240 dp`；等待可设 `200～3000 毫秒`，默认 `500 毫秒`。输入校验、取消、完成保存与恢复默认均有独立处理。
+- 侧滑返回外观提供系统默认及渐变彩虹等预设，可分别设置背景、箭头的基色与透明度，并预览同色系自动日夜配色。
+- 修复消费资源组切换后已有玻璃倒角、卡片和网格背景未同步的问题，支持同一实例日夜来回切换及密度变化，同时保留既有玻璃与控制中心开合设置。
 
-[下载正式 APK](https://github.com/Xposed-Modules-Repo/io.github.yudigaga.fusionstatusbar/releases/tag/229-0.5.15) · [0.5.15 更新说明与验证范围](https://github.com/yudigaga/FusionStatusBar/blob/v0.5.15/docs/release-notes-v0.5.15.md)
+[下载正式 APK](https://github.com/Xposed-Modules-Repo/io.github.yudigaga.fusionstatusbar/releases/tag/234-0.5.20) · [0.5.20 更新说明与验证范围](https://github.com/yudigaga/FusionStatusBar/blob/v0.5.20/docs/release-notes-v0.5.20.md)
 
-使用原正式证书签名，可覆盖更新 0.5.13。更新后重启系统界面或设备，再打开 FusionStatusBar 同步配置。已有图标位置与缩放设置保留；从更早版本升级时，仍按 [0.3.197 升级说明](https://github.com/yudigaga/FusionStatusBar/blob/v0.3.197/docs/release-notes-v0.3.197.md) 核对 **System（system / system_server）** 作用域。
+使用原正式证书签名，可覆盖更新 0.5.15。更新后重启系统桌面和系统界面，或重启设备，再打开 FusionStatusBar 同步配置。确认 `com.miui.home` 与 `com.android.systemui` 作用域已启用；从更早版本升级时，仍按 [0.3.197 升级说明](https://github.com/yudigaga/FusionStatusBar/blob/v0.3.197/docs/release-notes-v0.3.197.md) 核对 **System（system / system_server）** 作用域。已有图标位置与缩放设置保留。
 
-本版定向 Debug 回归 `339` 项、`52` 个测试类通过，失败、错误和跳过均为 `0`；Release lint 为 `0` 错误、`98` 条警告。本次发布前另有 `28` 项 Python 工具测试通过。完整 Debug/Release 单元测试、Debug lint 及本版实机验证尚未执行；本地操作计数与队列测试不代表目标手机帧率或手势效果。远端 CI 以发布提交的 GitHub Actions 为准。签名、APK 元数据和完整验证范围见 [0.5.15 更新说明](https://github.com/yudigaga/FusionStatusBar/blob/v0.5.15/docs/release-notes-v0.5.15.md)。
+本版 Debug、Release 各 `26` 类、`242` 项定向测试通过，失败、错误和跳过均为 `0`；两种变体 lint 均为 `0` 错误，警告分别为 `99` / `98` 条。Python 工具测试 `28` 项通过。完整 Debug/Release 单元测试套件及本版手机安装、真实 LSPosed 回调、阈值和震动手感尚未验证；远端 CI 以发布提交的 GitHub Actions 为准。签名、APK 元数据和完整验证范围见 [0.5.20 更新说明](https://github.com/yudigaga/FusionStatusBar/blob/v0.5.20/docs/release-notes-v0.5.20.md)。
 
 当前高光玻璃没有实现真实背景折射，尚未完成目标 ROM 的真实 MiGlass 绘制、视觉和稳定性验收。
 
-正式 APK SHA-256：`03f1f84cdc75ce7ecff8599d2af246b6196f8e2d9c5633017e4989a15e1172da`。完整来源见[源码发布页](https://github.com/yudigaga/FusionStatusBar/releases/tag/v0.5.15)与[构建记录](https://github.com/yudigaga/FusionStatusBar/blob/v0.5.15/artifacts/release-v0.5.15.json)。签名证书 SHA-256：`ccfaf42f8f14bb36973aeb971572fcc956a256196f68ff088340dfa7eca96fe2`。
+正式 APK SHA-256：`f58333f44372685aabc65bb92f2eb39df1b50581cde069a8d29d4dde0c182e89`。完整来源见[源码发布页](https://github.com/yudigaga/FusionStatusBar/releases/tag/v0.5.20)与[构建记录](https://github.com/yudigaga/FusionStatusBar/blob/v0.5.20/artifacts/release-v0.5.20.json)。签名证书 SHA-256：`ccfaf42f8f14bb36973aeb971572fcc956a256196f68ff088340dfa7eca96fe2`。
 
 ## 0.3.173 更新（历史）
 
@@ -50,7 +50,7 @@ FusionStatusBar 是面向 MIUI/HyperOS 的 LibXposed 模块，提供融合图标
 
 1. 从本仓库的 Release 下载并安装正式 APK。
 2. 在 LSPosed 中启用模块，选择上述作用域。
-3. 重启系统界面或设备，再打开模块设置并确认连接状态。
+3. 重启系统桌面和系统界面，或重启设备，再打开模块设置并确认连接状态。
 
 ## 从旧包名迁移
 
