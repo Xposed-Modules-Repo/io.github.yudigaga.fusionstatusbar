@@ -11,9 +11,28 @@ FusionStatusBar 是面向 MIUI/HyperOS 的 LibXposed 模块，提供融合图标
 - 分别调整电源菜单、音量菜单、通知中心与悬浮通知外观，支持三条电源菜单和短款音量条。
 - 隐藏桌面应用图标，自定义桌面手势与返回停顿，选择系统动作、应用、活动、快捷方式和功能切换。
 - 设置页面、底部导航和公共弹窗使用 Compose/Miuix 控件。
+- 应用界面支持跟随系统及简体中文、繁體中文、English、日本語、한국어、Русский、Español。
 - 杂项页提供可选的链式启动确认移除、截屏剪贴板保护和指定版本的手机管家扩展，设置页可切换毛玻璃悬浮底栏。
 
-## 最新正式版：0.5.24
+## 最新正式版：0.5.25
+
+- 版本号 `0.5.25`，构建号 `239`；以下为相对已发布 `0.5.24` R8 正式版的更新。
+- 新增“设置 → 界面 → 应用语言”，提供跟随系统及简中、繁中、英、日、韩、俄、西七种语言。每种语言覆盖 `850` 条 string，包含设置、导航、对话框、控制中心画布与编辑器、无障碍提示，以及手机管家 26 项设置的分类、标题和说明。
+- 切换前等待设置保存或已明确发起的控制中心发布成功；保存失败时取消切换。重建后恢复页面、滚动位置、编辑会话和杂项设置，并重新提交尚未完成的明确保存目标。未推送草稿保持草稿，保留发布期间的后续修改。
+- 语言选择由 Android 原生 `LocaleManager` 保存；跟随系统会清除应用语言覆盖。切换模块界面语言无需重启 SystemUI 或手机管家，不改变这些宿主进程的全局语言。用户文本、配置键、已保存的时钟格式和既有中文农历语义保留。
+- 延续 `0.5.24` 已启用的 Release R8 压缩、优化和混淆；标准构建、验证及 CI 改为只处理 Release，并核对成品 DEX 的 R8 标记与 mapping 编译器版本、映射 ID。原有充电显示、截屏剪贴板和手机管家扩展保持独立，本版没有新增 LSPosed 作用域。
+
+[下载正式 APK](https://github.com/Xposed-Modules-Repo/io.github.yudigaga.fusionstatusbar/releases/tag/239-0.5.25) · [0.5.25 更新说明与验证范围](https://github.com/yudigaga/FusionStatusBar/blob/v0.5.25/docs/release-notes-v0.5.25.md) · [多语言实现说明](https://github.com/yudigaga/FusionStatusBar/blob/v0.5.25/docs/2026-11-09_app-languages.md)
+
+沿用原正式证书，可覆盖更新 `0.5.24` 及后续本地正式签名版本。已有系统、SystemUI、插件、桌面与手机管家作用域及首次加载系统侧截图保护的整机重启要求保持适用；具体功能边界见下方历史说明。
+
+本版原始归档记录 Release `208` 类、`1,598` 项完整单元测试通过，失败、错误和跳过均为 `0`；lint 为 `0` 错误、`145` 条警告，高风险政策通过。本轮 Python 工具回归 `62` 项和独立 R8 成品验包通过；本次发布未执行 Debug 构建或验收。R8 版本为 `8.13.19`，外部入口、构造和回调另有静态核验。普通 JVM 单测执行在混淆前类上，Robolectric 重建和静态 APK 检查不能代替手机验收。本版尚未验证手机安装、真实语言自动重建与跨重启持久化、R8 后实际 LSPosed 回调、ROM、硬件或服务效果；远端 CI 以本版发布提交的 GitHub Actions 为准。
+
+最终 APK 见[主仓 v0.5.25 发布页](https://github.com/yudigaga/FusionStatusBar/releases/tag/v0.5.25)；R8 mapping、合并规则、seeds、usage、测试和 lint 报告随验证附件提供。构建来源和最终签名信息见[本次构建记录](https://github.com/yudigaga/FusionStatusBar/blob/v0.5.25/artifacts/release-v0.5.25.json)。原始构建保留 `buildMode=local_dirty_signed`、`sourceCommit=fe7bb9d230781985779e11e7151fc509acffd59f`、`sourceDirty=true` 和 `validationInput=existing_build_outputs`；随附源码快照、文件索引和补丁记录当时的未提交改动，发布提交与 APK 构建来源分别记录。
+
+正式 APK 大小：`3,875,941` 字节，SHA-256：`ce5d19fd99bf16aba7b02a807d5bbde248b4143fd8e87a3b627884b528d1989c`。签名证书 SHA-256：`ccfaf42f8f14bb36973aeb971572fcc956a256196f68ff088340dfa7eca96fe2`。
+
+## 0.5.24 更新（历史）
 
 - 版本号 `0.5.24`，构建号 `238`，沿用末位满 100、中间位满 10 的版本进位规则。以下为相对 `0.5.21` 的累计更新。
 - “融合图标 → 显示 → 充电时显示充电图标”默认开启；关闭后充电期间显示电量数字，保留圆环配色、位置与缩放。旧配置缺少该字段时默认开启。
