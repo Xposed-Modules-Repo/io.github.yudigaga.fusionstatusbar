@@ -2,6 +2,22 @@
 
 FusionStatusBar 是面向 MIUI/HyperOS 的 LibXposed 模块，提供融合图标、双排状态栏、时钟天气与设备遥测、控制中心布局和外观编辑，以及桌面应用隐藏与手势。
 
+[下载 0.5.27 正式 APK](https://github.com/Xposed-Modules-Repo/io.github.yudigaga.fusionstatusbar/releases/tag/241-0.5.27) · [主仓发布页](https://github.com/yudigaga/FusionStatusBar/releases/tag/v0.5.27) · [源码与反馈](https://github.com/yudigaga/FusionStatusBar) · [历史更新](HISTORY.md)
+
+## 当前版本：0.5.27
+
+版本号 `0.5.27`，构建号 `241`，沿用正式证书和 Release R8。以下为相对已发布 `0.5.25` 的累计更新：
+
+- 新增“杂项 → 扫描与确认 → 隐藏首页风险提醒”，默认关闭，与“锁定 666 分”独立。开启后隐藏普通手机管家首页的危险/风险结论文案，病毒扫描、优化加速卡片使用普通颜色和中性说明，并隐藏红点。
+- 补齐顶部和底部“正在体检…”的过滤，包括显入动画重新显示时的处理；底部实际结果文案保留。关闭开关时恢复原生显示，原生体检、扫描、优化和真实评分继续执行。
+- 设置标题和说明覆盖七种界面语言。本版没有新增 LSPosed 作用域。
+
+该扩展适配 `com.miui.securitycenter` 的 `13.8.0-261020.0.1`（versionCode `40001380`），其他版本不套用这组映射。顶部与体检文案适配普通 `MainContentFrame`，Lite、Pad、Fold 及结果页不在本次范围。
+
+原始归档包含 **32 项相关 Release 测试**，失败、错误和跳过均为 `0`；lint 为 `0` 错误、`142` 条警告，高风险政策通过；R8 为 `8.13.19`。本版未重复全量测试，也未执行 Debug 构建。手机安装、R8 后真实 LSPosed 回调、ART 去优化、体检动画及目标 ROM 效果尚未实机验收。
+
+[本版更新、签名与验证范围](https://github.com/yudigaga/FusionStatusBar/blob/v0.5.27/docs/release-notes-v0.5.27.md) · [首页提醒实现报告](https://github.com/yudigaga/FusionStatusBar/blob/v0.5.27/docs/2026-11-13_reverse-security-home-reminders-report.md) · [体检文案补充报告](https://github.com/yudigaga/FusionStatusBar/blob/v0.5.27/docs/2026-11-13_security-home-scanning-report.md)
+
 ## 功能
 
 - 调整融合图标、状态栏布局和双排显示，选择充电时显示闪电或电量数字。
@@ -14,74 +30,22 @@ FusionStatusBar 是面向 MIUI/HyperOS 的 LibXposed 模块，提供融合图标
 - 应用界面支持跟随系统及简体中文、繁體中文、English、日本語、한국어、Русский、Español。
 - 杂项页提供可选的链式启动确认移除、截屏剪贴板保护和指定版本的手机管家扩展，设置页可切换毛玻璃悬浮底栏。
 
-## 赞助
-
-如果你喜欢这个项目，欢迎请我喝杯咖啡 ☕
-
-<img src="docs/assets/sponsor-wechat.png" alt="微信赞赏码" width="360" />
-
-## 最新正式版：0.5.25
-
-- 版本号 `0.5.25`，构建号 `239`；以下为相对已发布 `0.5.24` R8 正式版的更新。
-- 新增“设置 → 界面 → 应用语言”，提供跟随系统及简中、繁中、英、日、韩、俄、西七种语言。每种语言覆盖 `850` 条 string，包含设置、导航、对话框、控制中心画布与编辑器、无障碍提示，以及手机管家 26 项设置的分类、标题和说明。
-- 切换前等待设置保存或已明确发起的控制中心发布成功；保存失败时取消切换。重建后恢复页面、滚动位置、编辑会话和杂项设置，并重新提交尚未完成的明确保存目标。未推送草稿保持草稿，保留发布期间的后续修改。
-- 语言选择由 Android 原生 `LocaleManager` 保存；跟随系统会清除应用语言覆盖。切换模块界面语言无需重启 SystemUI 或手机管家，不改变这些宿主进程的全局语言。用户文本、配置键、已保存的时钟格式和既有中文农历语义保留。
-- 延续 `0.5.24` 已启用的 Release R8 压缩、优化和混淆；标准构建、验证及 CI 改为只处理 Release，并核对成品 DEX 的 R8 标记与 mapping 编译器版本、映射 ID。原有充电显示、截屏剪贴板和手机管家扩展保持独立，本版没有新增 LSPosed 作用域。
-
-[下载正式 APK](https://github.com/Xposed-Modules-Repo/io.github.yudigaga.fusionstatusbar/releases/tag/239-0.5.25) · [0.5.25 更新说明与验证范围](https://github.com/yudigaga/FusionStatusBar/blob/v0.5.25/docs/release-notes-v0.5.25.md) · [多语言实现说明](https://github.com/yudigaga/FusionStatusBar/blob/v0.5.25/docs/2026-11-09_app-languages.md)
-
-沿用原正式证书，可覆盖更新 `0.5.24` 及后续本地正式签名版本。已有系统、SystemUI、插件、桌面与手机管家作用域及首次加载系统侧截图保护的整机重启要求保持适用；具体功能边界见下方历史说明。
-
-本版原始归档记录 Release `208` 类、`1,598` 项完整单元测试通过，失败、错误和跳过均为 `0`；lint 为 `0` 错误、`145` 条警告，高风险政策通过。本轮 Python 工具回归 `62` 项和独立 R8 成品验包通过；本次发布未执行 Debug 构建或验收。R8 版本为 `8.13.19`，外部入口、构造和回调另有静态核验。普通 JVM 单测执行在混淆前类上，Robolectric 重建和静态 APK 检查不能代替手机验收。本版尚未验证手机安装、真实语言自动重建与跨重启持久化、R8 后实际 LSPosed 回调、ROM、硬件或服务效果；远端 CI 以本版发布提交的 GitHub Actions 为准。
-
-最终 APK 见[主仓 v0.5.25 发布页](https://github.com/yudigaga/FusionStatusBar/releases/tag/v0.5.25)；R8 mapping、合并规则、seeds、usage、测试和 lint 报告随验证附件提供。构建来源和最终签名信息见[本次构建记录](https://github.com/yudigaga/FusionStatusBar/blob/v0.5.25/artifacts/release-v0.5.25.json)。原始构建保留 `buildMode=local_dirty_signed`、`sourceCommit=fe7bb9d230781985779e11e7151fc509acffd59f`、`sourceDirty=true` 和 `validationInput=existing_build_outputs`；随附源码快照、文件索引和补丁记录当时的未提交改动，发布提交与 APK 构建来源分别记录。
-
-正式 APK 大小：`3,875,941` 字节，SHA-256：`ce5d19fd99bf16aba7b02a807d5bbde248b4143fd8e87a3b627884b528d1989c`。签名证书 SHA-256：`ccfaf42f8f14bb36973aeb971572fcc956a256196f68ff088340dfa7eca96fe2`。
-
-## 0.5.24 更新（历史）
-
-- 版本号 `0.5.24`，构建号 `238`，沿用末位满 100、中间位满 10 的版本进位规则。以下为相对 `0.5.21` 的累计更新。
-- “融合图标 → 显示 → 充电时显示充电图标”默认开启；关闭后充电期间显示电量数字，保留圆环配色、位置与缩放。旧配置缺少该字段时默认开启。
-- “杂项 → 截屏 → 截屏自动写入剪贴板”默认关闭。开启后在系统侧 SettingsProvider 保护 Secure 设置 `mi_screen_shots_write_clipboard_enable=1`；关闭时写回 `0` 并解除保护，保留原系统权限和跨用户检查。
-- “杂项 → 手机管家扩展”新增 26 项独立开关，默认全部关闭；仅适配 `com.miui.securitycenter`、`13.8.0-261020.0.1`、versionCode `40001380`，未知版本不套用新增映射。涵盖隐私与出行、扫描与确认、游戏/视频工具箱、电池与充电，另提供 `1～60` 分钟的参考亮屏时间显示粒度，默认 `1` 分钟，仅改变显示粒度。
-- Release 先启用 R8 代码压缩、优化和混淆，再生成正式签名包；精确保留 LibXposed 入口及回调，未启用资源压缩。优化 APK 的入口、Manifest/XML 构造和枚举配置边界已单独验包，映射中有 `523` 个模块类型重命名。
-
-[下载正式 APK](https://github.com/Xposed-Modules-Repo/io.github.yudigaga.fusionstatusbar/releases/tag/238-0.5.24) · [0.5.24 更新说明与验证范围](https://github.com/yudigaga/FusionStatusBar/blob/v0.5.24/docs/release-notes-v0.5.24.md)
-
-使用原正式证书签名，可覆盖更新 `0.5.21`。本版没有新增 LSPosed 作用域；升级时核对系统、SystemUI、插件、桌面与手机管家作用域已勾选。从更早版本升级时，仍按 [0.3.197 升级说明](https://github.com/yudigaga/FusionStatusBar/blob/v0.3.197/docs/release-notes-v0.3.197.md) 核对 **System（system / system_server）** 作用域。已有图标位置与缩放设置保留。
-
-首次加载系统侧截图保护时，需勾选系统作用域并整机重启；后续修改开关按配置通知应用，无需每次重启。手机管家扩展需勾选 `com.miui.securitycenter`，安装新版后重启手机管家相关进程或手机，修改选项后可能需要重建对应页面或工具箱；仅重启 SystemUI 不等于重启手机管家。
-
-手机管家选项主要开放本地入口、支持判断、名单或显示，不会增加缺失硬件。风扇、游戏音效和独显增强标为 UI 功能；超分、插帧、HDR、影院和充电仍依赖原生服务与硬件。“三秒进游戏”不保证进入耗时，填充展示不保证扩大视野；视频工具箱温度选项不解除底层硬件温控。影院缺少杜比支持时可能导致手机管家崩溃，晕车缓解与车祸检测仍需真实传感器。完整边界见[手机管家实施报告](https://github.com/yudigaga/FusionStatusBar/blob/v0.5.24/docs/2026-11-09_security-center-13.8-report.md)。
-
-本版归档记录 Debug、Release 各 `204` 类、`1,572` 项完整单元测试通过，失败、错误和跳过均为 `0`；两种变体 lint 均为 `0` 错误、`101` 条警告。Python 工具测试 `45` 项通过，其中包含 `17` 项 R8 验包回归。普通 JVM 单元测试执行在混淆前类上，优化 APK 的结构检查另有记录；两者都不能代替设备验收。本版手机安装、真实 LSPosed 回调、目标 ROM、硬件与服务效果尚未验收；远端 CI 以发布提交的 GitHub Actions 为准。
-
-R8 的 `mapping.txt`、最终规则、seeds、usage、`r8-verification.json` 和两套测试、lint 报告随[源码发布页的验证附件](https://github.com/yudigaga/FusionStatusBar/releases/tag/v0.5.24)提供。签名、APK 元数据与验证范围见 [0.5.24 更新说明](https://github.com/yudigaga/FusionStatusBar/blob/v0.5.24/docs/release-notes-v0.5.24.md)及[本次构建记录](https://github.com/yudigaga/FusionStatusBar/blob/v0.5.24/artifacts/release-v0.5.24.json)。
-
-当前高光玻璃没有实现真实背景折射，尚未完成目标 ROM 的真实 MiGlass 绘制、视觉和稳定性验收。
-
-正式 APK 大小：`3,335,213` 字节，SHA-256：`c81924b0db367c26822c3032476eb1fbba59c02b49ff05b9e574e42886eb3789`。本次从干净源码提交 `e2ab818` 重新构建，归档为 `official_signed`。签名证书 SHA-256：`ccfaf42f8f14bb36973aeb971572fcc956a256196f68ff088340dfa7eca96fe2`。
-
-## 0.3.173 更新（历史）
-
-汇总 0.3.152-0.3.173 的控制中心布局、材质与绘制修复，统一音乐和融合中心的形状与底色，修复磁贴遮罩和重启后材质恢复，并新增系统菜单扩展。
-
-[完整更新说明](https://github.com/yudigaga/FusionStatusBar/blob/v0.3.173/docs/release-v0.3.173.md)
-
-正式包继续使用 `io.github.yudigaga.fusionstatusbar` 和原签名，可覆盖 0.3.150 及后续正式版。历史 0.3.173 验证记录未进行实体手机安装、SystemUI 注入或目标 ROM 验收。
-
 ## 适用范围
 
-- Android 13（API 33）及以上，使用支持 LibXposed API 102 的框架。
-- 作用域为 `system`、`com.android.systemui`、`miui.systemui.plugin`、`com.miui.home` 和 `com.miui.securitycenter`。从 0.3.193 升级后请新增勾选 System（system_server），随后重启手机。
+- Android 13（API 33）及以上，使用支持 LibXposed API 102 的框架。最低 Android 版本不代表所有厂商 ROM 均已验证兼容。
+- 作用域为 `system`、`com.android.systemui`、`miui.systemui.plugin`、`com.miui.home` 和 `com.miui.securitycenter`。
 - 侧边栏动作需要先开启系统侧边栏；“重启系统桌面”需要 root 授权。
-- SystemUI 与厂商插件实现存在差异，最低 Android 版本不代表所有 ROM 都已验证兼容。
+- 手机管家扩展默认关闭，主要调整本地入口、支持判断或显示。超分、插帧、HDR、影院与充电等仍依赖原生服务和硬件；缺少杜比支持时开启影院可能导致手机管家崩溃。详见[功能边界](https://github.com/yudigaga/FusionStatusBar/blob/v0.5.27/docs/2026-11-09_security-center-13.8-report.md)。
+- 高光玻璃尚未实现真实背景折射，也未完成目标 ROM 的真实 MiGlass 绘制、视觉和稳定性验收。
 
 ## 安装与启用
 
-1. 从本仓库的 Release 下载并安装正式 APK。
-2. 在 LSPosed 中启用模块，选择上述作用域。
-3. 首次安装或补选 System 作用域后重启设备，使系统侧 Hook 加载，再打开模块设置并确认连接状态。
+1. 从本仓库 Release 下载并安装正式 APK；沿用原证书，可覆盖更新 `0.5.25` 及 `0.5.26` 本地正式签名包。
+2. 在 LSPosed 中启用模块，核对上述作用域。首次安装或从早期版本升级时补选 System（system / system_server），随后重启设备。
+3. 使用本次首页功能时，开启“杂项 → 扫描与确认 → 隐藏首页风险提醒”，并在安装更新后重启手机管家进程，或重启设备加载新 Hook；仅重启 SystemUI 不会重启手机管家。
+4. 已加载新 Hook 后，修改该开关会通知宿主刷新；可在当前首页核对开关恢复、增量/完整体检和实际结果显示。
+
+首次加载系统侧截屏剪贴板保护同样需要 System 作用域及整机重启；后续修改开关按配置通知应用。语言切换只改变模块界面，无需重启 SystemUI 或手机管家。升级后原有图标、布局与语言设置保留，控制中心未推送草稿不会自动发布。
 
 ## 从旧包名迁移
 
@@ -93,6 +57,14 @@ R8 的 `mapping.txt`、最终规则、seeds、usage、`r8-verification.json` 和
 
 不要同时启用新旧两个模块，以免两套 Hook 同时修改系统界面。
 
-## 源码与反馈
+## 文档与反馈
 
-[项目源码及问题反馈](https://github.com/yudigaga/FusionStatusBar)
+- [0.5.25、0.5.24 与 0.3.173 历史更新](HISTORY.md)：保留原正文、下载地址、签名和验证记录。
+- [主仓文档导航](https://github.com/yudigaga/FusionStatusBar/blob/v0.5.27/docs/README.md)：功能说明、构建方法和开发记录。
+- [问题反馈](https://github.com/yudigaga/FusionStatusBar/issues)：请提供模块版本、ROM、宿主版本、作用域、复现步骤及脱敏日志。
+
+## 赞助
+
+如果你喜欢这个项目，欢迎请我喝杯咖啡 ☕
+
+<img src="docs/assets/sponsor-wechat.png" alt="微信赞赏码" width="360" />
