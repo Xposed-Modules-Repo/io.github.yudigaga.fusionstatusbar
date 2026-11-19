@@ -2,21 +2,19 @@
 
 FusionStatusBar 是面向 MIUI/HyperOS 的 LibXposed 模块，提供融合图标、双排状态栏、时钟天气与设备遥测、控制中心布局和外观编辑，以及桌面应用隐藏与手势。
 
-[下载 0.5.27 正式 APK](https://github.com/Xposed-Modules-Repo/io.github.yudigaga.fusionstatusbar/releases/tag/241-0.5.27) · [主仓发布页](https://github.com/yudigaga/FusionStatusBar/releases/tag/v0.5.27) · [源码与反馈](https://github.com/yudigaga/FusionStatusBar) · [历史更新](HISTORY.md)
+[下载 0.5.34 正式 APK](https://github.com/Xposed-Modules-Repo/io.github.yudigaga.fusionstatusbar/releases/tag/248-0.5.34) · [主仓发布页](https://github.com/yudigaga/FusionStatusBar/releases/tag/v0.5.34) · [源码与反馈](https://github.com/yudigaga/FusionStatusBar) · [历史更新](HISTORY.md)
 
-## 当前版本：0.5.27
+## 当前版本：0.5.34
 
-版本号 `0.5.27`，构建号 `241`，沿用正式证书和 Release R8。以下为相对已发布 `0.5.25` 的累计更新：
+版本号 `0.5.34`，构建号 `248`，使用正式证书和 Release R8。主要更新：
 
-- 新增“杂项 → 扫描与确认 → 隐藏首页风险提醒”，默认关闭，与“锁定 666 分”独立。开启后隐藏普通手机管家首页的危险/风险结论文案，病毒扫描、优化加速卡片使用普通颜色和中性说明，并隐藏红点。
-- 补齐顶部和底部“正在体检…”的过滤，包括显入动画重新显示时的处理；底部实际结果文案保留。关闭开关时恢复原生显示，原生体检、扫描、优化和真实评分继续执行。
-- 设置标题和说明覆盖七种界面语言。本版没有新增 LSPosed 作用域。
+- 新增 19 项状态栏图标显示设置。
+- 高光玻璃在 OEM 私有模糊能力未知时使用可恢复的 Canvas 兼容表面；不代表原生 MiGlass 实现。
+- 调整通知背景绘制与恢复、通知时钟边界，以及网速布局和生命周期处理。
 
-该扩展适配 `com.miui.securitycenter` 的 `13.8.0-261020.0.1`（versionCode `40001380`），其他版本不套用这组映射。顶部与体检文案适配普通 `MainContentFrame`，Lite、Pad、Fold 及结果页不在本次范围。
+本次验证：Release R8 构建及正式证书签名完成，`lintVitalRelease` 通过。0.5.34 未重跑单元测试，未运行完整 lint。0.5.33 历史记录中的 `1,852` 项通过、`26` 项失败与 0.5.32 基线失败集一致，但不构成 0.5.34 的测试证据。没有设备、真实 LSPosed 回调或目标 ROM 验收。
 
-原始归档包含 **32 项相关 Release 测试**，失败、错误和跳过均为 `0`；lint 为 `0` 错误、`142` 条警告，高风险政策通过；R8 为 `8.13.19`。本版未重复全量测试，也未执行 Debug 构建。手机安装、R8 后真实 LSPosed 回调、ART 去优化、体检动画及目标 ROM 效果尚未实机验收。
-
-[本版更新、签名与验证范围](https://github.com/yudigaga/FusionStatusBar/blob/v0.5.27/docs/release-notes-v0.5.27.md) · [首页提醒实现报告](https://github.com/yudigaga/FusionStatusBar/blob/v0.5.27/docs/2026-11-13_reverse-security-home-reminders-report.md) · [体检文案补充报告](https://github.com/yudigaga/FusionStatusBar/blob/v0.5.27/docs/2026-11-13_security-home-scanning-report.md)
+[0.5.34 更新、签名与验证范围](https://github.com/yudigaga/FusionStatusBar/blob/v0.5.34/docs/release-notes-v0.5.34.md)
 
 ## 功能
 
@@ -35,15 +33,13 @@ FusionStatusBar 是面向 MIUI/HyperOS 的 LibXposed 模块，提供融合图标
 - Android 13（API 33）及以上，使用支持 LibXposed API 102 的框架。最低 Android 版本不代表所有厂商 ROM 均已验证兼容。
 - 作用域为 `system`、`com.android.systemui`、`miui.systemui.plugin`、`com.miui.home` 和 `com.miui.securitycenter`。
 - 侧边栏动作需要先开启系统侧边栏；“重启系统桌面”需要 root 授权。
-- 手机管家扩展默认关闭，主要调整本地入口、支持判断或显示。超分、插帧、HDR、影院与充电等仍依赖原生服务和硬件；缺少杜比支持时开启影院可能导致手机管家崩溃。详见[功能边界](https://github.com/yudigaga/FusionStatusBar/blob/v0.5.27/docs/2026-11-09_security-center-13.8-report.md)。
-- 高光玻璃尚未实现真实背景折射，也未完成目标 ROM 的真实 MiGlass 绘制、视觉和稳定性验收。
+- 手机管家扩展默认关闭，具体功能依赖对应宿主版本、原生服务或硬件；详见[功能边界](https://github.com/yudigaga/FusionStatusBar/blob/v0.5.34/docs/2026-11-09_security-center-13.8-report.md)。
+- 高光玻璃兼容表面不表示真实背景折射或原生 MiGlass；视觉和稳定性仍需在目标 ROM 上验收。
 
 ## 安装与启用
 
-1. 从本仓库 Release 下载并安装正式 APK；沿用原证书，可覆盖更新 `0.5.25` 及 `0.5.26` 本地正式签名包。
+1. 从本仓库 Release 下载并安装正式 APK；升级时请使用相同正式签名证书。
 2. 在 LSPosed 中启用模块，核对上述作用域。首次安装或从早期版本升级时补选 System（system / system_server），随后重启设备。
-3. 使用本次首页功能时，开启“杂项 → 扫描与确认 → 隐藏首页风险提醒”，并在安装更新后重启手机管家进程，或重启设备加载新 Hook；仅重启 SystemUI 不会重启手机管家。
-4. 已加载新 Hook 后，修改该开关会通知宿主刷新；可在当前首页核对开关恢复、增量/完整体检和实际结果显示。
 
 首次加载系统侧截屏剪贴板保护同样需要 System 作用域及整机重启；后续修改开关按配置通知应用。语言切换只改变模块界面，无需重启 SystemUI 或手机管家。升级后原有图标、布局与语言设置保留，控制中心未推送草稿不会自动发布。
 
@@ -59,8 +55,8 @@ FusionStatusBar 是面向 MIUI/HyperOS 的 LibXposed 模块，提供融合图标
 
 ## 文档与反馈
 
-- [0.5.25、0.5.24 与 0.3.173 历史更新](HISTORY.md)：保留原正文、下载地址、签名和验证记录。
-- [主仓文档导航](https://github.com/yudigaga/FusionStatusBar/blob/v0.5.27/docs/README.md)：功能说明、构建方法和开发记录。
+- [0.5.27 及更早版本的历史更新](HISTORY.md)：保留对应版本的正文、下载地址、签名和验证记录。
+- [主仓文档导航](https://github.com/yudigaga/FusionStatusBar/blob/v0.5.34/docs/README.md)：功能说明、构建方法和开发记录。
 - [问题反馈](https://github.com/yudigaga/FusionStatusBar/issues)：请提供模块版本、ROM、宿主版本、作用域、复现步骤及脱敏日志。
 
 ## 赞助

@@ -4,6 +4,20 @@
 
 [返回项目首页](README.md)
 
+## 0.5.27 更新（历史）
+
+版本号 `0.5.27`，构建号 `241`，沿用正式证书和 Release R8。以下为相对已发布 `0.5.25` 的累计更新：
+
+- 新增“杂项 → 扫描与确认 → 隐藏首页风险提醒”，默认关闭，与“锁定 666 分”独立。开启后隐藏普通手机管家首页的危险/风险结论文案，病毒扫描、优化加速卡片使用普通颜色和中性说明，并隐藏红点。
+- 补齐顶部和底部“正在体检…”的过滤，包括显入动画重新显示时的处理；底部实际结果文案保留。关闭开关时恢复原生显示，原生体检、扫描、优化和真实评分继续执行。
+- 设置标题和说明覆盖七种界面语言。本版没有新增 LSPosed 作用域。
+
+该扩展适配 `com.miui.securitycenter` 的 `13.8.0-261020.0.1`（versionCode `40001380`），其他版本不套用这组映射。顶部与体检文案适配普通 `MainContentFrame`，Lite、Pad、Fold 及结果页不在本次范围。
+
+原始归档包含 **32 项相关 Release 测试**，失败、错误和跳过均为 `0`；lint 为 `0` 错误、`142` 条警告，高风险政策通过；R8 为 `8.13.19`。本版未重复全量测试，也未执行 Debug 构建。手机安装、R8 后真实 LSPosed 回调、ART 去优化、体检动画及目标 ROM 效果尚未实机验收。
+
+[本版更新、签名与验证范围](https://github.com/yudigaga/FusionStatusBar/blob/v0.5.27/docs/release-notes-v0.5.27.md) · [首页提醒实现报告](https://github.com/yudigaga/FusionStatusBar/blob/v0.5.27/docs/2026-11-13_reverse-security-home-reminders-report.md) · [体检文案补充报告](https://github.com/yudigaga/FusionStatusBar/blob/v0.5.27/docs/2026-11-13_security-home-scanning-report.md)
+
 ## 0.5.25 更新（历史）
 
 - 版本号 `0.5.25`，构建号 `239`；以下为相对已发布 `0.5.24` R8 正式版的更新。
