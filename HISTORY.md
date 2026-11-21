@@ -4,6 +4,18 @@
 
 [返回项目首页](README.md)
 
+## 0.5.34 更新（历史）
+
+版本号 `0.5.34`，构建号 `248`，使用正式证书和 Release R8。主要更新：
+
+- 新增 19 项状态栏图标显示设置。
+- 高光玻璃在 OEM 私有模糊能力未知时使用可恢复的 Canvas 兼容表面；不代表原生 MiGlass 实现。
+- 调整通知背景绘制与恢复、通知时钟边界，以及网速布局和生命周期处理。
+
+本次验证：Release R8 构建及正式证书签名完成，`lintVitalRelease` 通过。0.5.34 未重跑单元测试，未运行完整 lint。0.5.33 历史记录中的 `1,852` 项中有 `26` 项失败，与 0.5.32 基线失败集一致，但不构成 0.5.34 的测试证据。没有设备、真实 LSPosed 回调或目标 ROM 验收。
+
+[下载 0.5.34 正式 APK](https://github.com/Xposed-Modules-Repo/io.github.yudigaga.fusionstatusbar/releases/tag/248-0.5.34) · [主仓发布页](https://github.com/yudigaga/FusionStatusBar/releases/tag/v0.5.34) · [0.5.34 更新、签名与验证范围](https://github.com/yudigaga/FusionStatusBar/blob/v0.5.34/docs/release-notes-v0.5.34.md)
+
 ## 0.5.27 更新（历史）
 
 版本号 `0.5.27`，构建号 `241`，沿用正式证书和 Release R8。以下为相对已发布 `0.5.25` 的累计更新：
