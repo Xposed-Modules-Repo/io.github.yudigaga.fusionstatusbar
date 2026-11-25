@@ -4,6 +4,18 @@
 
 [返回项目首页](README.md)
 
+## 0.5.36 更新（历史）
+
+版本号 `0.5.36`，构建号 `250`。相对已发布的 `0.5.34`，本版包含以下布局修订：
+
+- 包含 0.5.35 对隐藏闹钟图标后稳定布局空隙的修订。
+- 修订隐私提示退出后的网速布局恢复。
+- 沿用现有 19 项状态图标显示设置及五个作用域，没有新增 LSPosed 作用域。
+
+正式包的构建、签名和自动化验证结果见本版发布说明。本版没有设备、真实 LSPosed 回调或目标 ROM 验收，不能将本地验证视为实机布局效果确认。
+
+[下载 0.5.36 正式 APK](https://github.com/Xposed-Modules-Repo/io.github.yudigaga.fusionstatusbar/releases/tag/250-0.5.36) · [主仓发布页](https://github.com/yudigaga/FusionStatusBar/releases/tag/v0.5.36) · [0.5.36 更新、签名与验证范围](https://github.com/yudigaga/FusionStatusBar/blob/v0.5.36/docs/release-notes-v0.5.36.md)
+
 ## 0.5.34 更新（历史）
 
 版本号 `0.5.34`，构建号 `248`，使用正式证书和 Release R8。主要更新：

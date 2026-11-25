@@ -2,19 +2,21 @@
 
 FusionStatusBar 是面向 MIUI/HyperOS 的 LibXposed 模块，提供融合图标、双排状态栏、时钟天气与设备遥测、控制中心布局和外观编辑，以及桌面应用隐藏与手势。
 
-[下载 0.5.36 正式 APK](https://github.com/Xposed-Modules-Repo/io.github.yudigaga.fusionstatusbar/releases/tag/250-0.5.36) · [主仓发布页](https://github.com/yudigaga/FusionStatusBar/releases/tag/v0.5.36) · [源码与反馈](https://github.com/yudigaga/FusionStatusBar) · [历史更新](HISTORY.md)
+[下载 0.5.38 正式 APK](https://github.com/Xposed-Modules-Repo/io.github.yudigaga.fusionstatusbar/releases/tag/252-0.5.38) · [主仓发布页](https://github.com/yudigaga/FusionStatusBar/releases/tag/v0.5.38) · [源码与反馈](https://github.com/yudigaga/FusionStatusBar) · [历史更新](HISTORY.md)
 
-## 当前版本：0.5.36
+## 当前版本：0.5.38
 
-版本号 `0.5.36`，构建号 `250`。相对已发布的 `0.5.34`，本版包含以下布局修订：
+版本号 `0.5.38`，构建号 `252`。相对已发布的 `0.5.36`，主要更新：
 
-- 包含 0.5.35 对隐藏闹钟图标后稳定布局空隙的修订。
-- 修订隐私提示退出后的网速布局恢复。
-- 沿用现有 19 项状态图标显示设置及五个作用域，没有新增 LSPosed 作用域。
+- 新增“设置 → 模块维护 → 模块日志”，默认开启。关闭后，各注入进程读取新设置后停止 Fusion 主动写入的日志，保留历史和导出；该开关不控制 LSPosed 框架、系统或其他模块独立记录的日志。
+- 调整多实例状态栏时钟与定时刷新：自定义格式按需每秒或每分钟更新，仅在有可见时钟且亮屏时定时更新；通知时钟也使用可见性调度。
+- 调整通知高光玻璃的背景、文字对比度及边缘反光。对已识别的 OEM 透明背景配合调整可见标准通知中的中性文字，切换模板或关闭效果时恢复宿主颜色；不保证任意自定义通知或 ROM 的显示效果。
+
+本版沿用已有五个 LSPosed 作用域。
 
 正式包的构建、签名和自动化验证结果见本版发布说明。本版没有设备、真实 LSPosed 回调或目标 ROM 验收，不能将本地验证视为实机布局效果确认。
 
-[0.5.36 更新、签名与验证范围](https://github.com/yudigaga/FusionStatusBar/blob/v0.5.36/docs/release-notes-v0.5.36.md)
+[0.5.38 更新、签名与验证范围](https://github.com/yudigaga/FusionStatusBar/blob/v0.5.38/docs/release-notes-v0.5.38.md)
 
 ## 功能
 
@@ -33,7 +35,7 @@ FusionStatusBar 是面向 MIUI/HyperOS 的 LibXposed 模块，提供融合图标
 - Android 13（API 33）及以上，使用支持 LibXposed API 102 的框架。最低 Android 版本不代表所有厂商 ROM 均已验证兼容。
 - 作用域为 `system`、`com.android.systemui`、`miui.systemui.plugin`、`com.miui.home` 和 `com.miui.securitycenter`。
 - 侧边栏动作需要先开启系统侧边栏；“重启系统桌面”需要 root 授权。
-- 手机管家扩展默认关闭，具体功能依赖对应宿主版本、原生服务或硬件；详见[功能边界](https://github.com/yudigaga/FusionStatusBar/blob/v0.5.36/docs/2026-11-09_security-center-13.8-report.md)。
+- 手机管家扩展默认关闭，具体功能依赖对应宿主版本、原生服务或硬件；详见[功能边界](https://github.com/yudigaga/FusionStatusBar/blob/v0.5.38/docs/2026-11-09_security-center-13.8-report.md)。
 - 高光玻璃兼容表面不表示真实背景折射或原生 MiGlass；视觉和稳定性仍需在目标 ROM 上验收。
 
 ## 安装与启用
@@ -55,8 +57,8 @@ FusionStatusBar 是面向 MIUI/HyperOS 的 LibXposed 模块，提供融合图标
 
 ## 文档与反馈
 
-- [0.5.34 及更早版本的历史更新](HISTORY.md)：保留对应版本的下载地址、签名和验证范围。
-- [主仓文档导航](https://github.com/yudigaga/FusionStatusBar/blob/v0.5.36/docs/README.md)：功能说明、构建方法和开发记录。
+- [0.5.36 及更早版本的历史更新](HISTORY.md)：保留对应版本的下载地址、签名和验证范围。
+- [主仓文档导航](https://github.com/yudigaga/FusionStatusBar/blob/v0.5.38/docs/README.md)：功能说明、构建方法和开发记录。
 - [问题反馈](https://github.com/yudigaga/FusionStatusBar/issues)：请提供模块版本、ROM、宿主版本、作用域、复现步骤及脱敏日志。
 
 ## 赞助
